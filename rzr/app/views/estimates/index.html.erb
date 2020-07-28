@@ -2,10 +2,16 @@
 
 <h1>Estimates</h1>
 
+
+<h3> Enter your adrdress to get the RedZilReal Average </h3>
+
+<%= text_field_tag 'address', '', size: 75 %>
+
 <%= button_to 'Scrape', scrape_estimates_path %>
 
 <table>
   <thead>
+    <tr></tr>
     <tr>
       <th>Site</th>
       <th>Address</th>

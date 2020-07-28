@@ -63,10 +63,11 @@ class EstimatesController < ApplicationController
 
   def scrape
     address = params[:address]
-    zillow_scrape= 'https://www.zillow.com/homes/11-Taylor-St-Gloucester,-MA,-01930_rb'
-    response = EstimatesSpider.process(url)
+    zillow_format = address.parameterize.dash
+    zillow_scrape= 'https://www.zillow.com/homes/' + zillow_format
+    response = EstimatesSpider.process(zillow_scrape)
     if response[:status] == :completed && response[:error].nil?
-      flash.now[:notice] = "Successfully scraped url"
+      flash.now[:notice] = "Successfully scraped zillow"
     else
       flash.now[:alert] = response[:error]
     end
